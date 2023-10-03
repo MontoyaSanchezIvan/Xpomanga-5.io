@@ -1,0 +1,92 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url('fondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    z-index: 1000;
+    /* Asegura que el header aparezca sobre otros elementos */
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+
+#logo-izquierda {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#logo-derecha {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+#menu ul li {
+    margin-right: 20px;
+}
+
+#menu ul li:last-child {
+    margin-right: 0;
+}
+
+#pie {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+}
+
+#contenido {
+    margin-top: 100px;
+    padding: 20px;
+    color: white;
+    flex: 1;
+    padding: 20px;
+}
+
+.galeria {
+    /* Estilos para la galería de imágenes */
+}
+
+/* Estilos para los otros elementos que mencionaste */
