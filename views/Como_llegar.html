@@ -48,35 +48,6 @@
     <script src="js/main.js"></script>
     <script src="js/mapa.js"></script>
 
-    <script>
-        document.getElementById("abrir-como-llegar").addEventListener("click", function() {
-    // Centra el mapa en la ubicación deseada (coordenadas) y un nivel de zoom.
-    mymap.setView([36.87858922633597, -2.4400945830127556], 16);
-
-    // Agrega un marcador en la ubicación deseada.
-    var marker = L.marker([36.87858922633597, -2.4400945830127556]).addTo(mymap);
-
-    // Crea el contenido del popup con un botón para copiar la dirección.
-    var popupContent = "<b>¡Aquí estamos!</b><br><button id='copiar-direccion'>Copiar dirección</button>";
-
-    // Abre el popup automáticamente en el marcador con el contenido personalizado.
-    var popup = marker.bindPopup(popupContent).openPopup();
-
-    // Agrega un evento de clic al botón "Copiar dirección".
-    document.getElementById("copiar-direccion").addEventListener("click", function() {
-        // Copia el contenido del popup al portapapeles.
-        var popupText = document.createElement("textarea");
-        popupText.value = "Dirección: ¡Aquí estamos!";
-        document.body.appendChild(popupText);
-        popupText.select();
-        document.execCommand("copy");
-        document.body.removeChild(popupText);
-
-        // Puedes mostrar un mensaje de confirmación o realizar otras acciones después de copiar.
-        alert("¡La dirección se ha copiado al portapapeles!");
-    });
-});
-    </script>
 </body>
 
 </html>
