@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Página Web</title>
     <link rel="stylesheet" type="text/css" href="../style/css.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 </head>
 
 <body>
@@ -24,41 +26,15 @@
     </header>
 
     <div id="contenido">
-        <section id="inicio">
-            <h1>Página de Inicio</h1>
-            <img src="imagen-central.jpg" alt="Imagen Central">
-            <!-- Galería de imágenes -->
-            <div class="galeria">
-                <!-- Aquí puedes agregar las imágenes de la galería -->
-            </div>
-        </section>
-
-        <section id="horarios">
-            <h1>Horarios</h1>
-            <ul>
-                <li>Viernes mañana</li>
-                <li>Viernes tarde</li>
-                <li>Sábado mañana</li>
-                <li>Sábado tarde</li>
-                <li>Domingo mañana</li>
-                <li>Domingo tarde</li>
-            </ul>
-        </section>
-
-        <section id="plano">
-            <h1>Plano</h1>
-            <!-- Agrega aquí el plano de tu evento -->
-        </section>
-
-        <section id="invitados">
-            <h1>Invitados</h1>
-            <!-- Agrega aquí información sobre los invitados -->
-        </section>
-
         <section id="como-llegar">
             <h1>Cómo llegar</h1>
-            <canvas id="mapa" width="400" height="300"></canvas>
-            <img src="imagen-mapa.jpg" alt="Mapa">
+            <div id="imagen-principal">
+                <img src="imagen-principal.jpg" alt="Imagen Principal">
+            </div>
+            <div id="mapa-interactivo">
+                <h2>Ubicación en Leaflet</h2>
+                <div id="mapa" style="height: 400px;"></div>
+            </div>
         </section>
     </div>
 
@@ -70,6 +46,37 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/mapa.js"></script>
+
+    <script>
+        document.getElementById("abrir-como-llegar").addEventListener("click", function() {
+    // Centra el mapa en la ubicación deseada (coordenadas) y un nivel de zoom.
+    mymap.setView([36.87858922633597, -2.4400945830127556], 16);
+
+    // Agrega un marcador en la ubicación deseada.
+    var marker = L.marker([36.87858922633597, -2.4400945830127556]).addTo(mymap);
+
+    // Crea el contenido del popup con un botón para copiar la dirección.
+    var popupContent = "<b>¡Aquí estamos!</b><br><button id='copiar-direccion'>Copiar dirección</button>";
+
+    // Abre el popup automáticamente en el marcador con el contenido personalizado.
+    var popup = marker.bindPopup(popupContent).openPopup();
+
+    // Agrega un evento de clic al botón "Copiar dirección".
+    document.getElementById("copiar-direccion").addEventListener("click", function() {
+        // Copia el contenido del popup al portapapeles.
+        var popupText = document.createElement("textarea");
+        popupText.value = "Dirección: ¡Aquí estamos!";
+        document.body.appendChild(popupText);
+        popupText.select();
+        document.execCommand("copy");
+        document.body.removeChild(popupText);
+
+        // Puedes mostrar un mensaje de confirmación o realizar otras acciones después de copiar.
+        alert("¡La dirección se ha copiado al portapapeles!");
+    });
+});
+    </script>
 </body>
 
 </html>
